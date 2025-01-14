@@ -1,0 +1,34 @@
+h1 {
+    text-align: center;
+}
+table {
+    position: relative;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    padding: 10px 20px;
+    border: 1px solid #000000; 
+}
+.tabs {
+    margin-top: 20px;
+}
+.tabs ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px
+}
+.tabs li a, .add-movie, .back-button {
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #e8e8e8;
+    border-radius: 10px;
+    color: #000000;
+    font-weight: bold;
+}
+.tabs li a:hover, .add-movie:hover, .back-button:hover {
+    background-color: #b4b4b4;
+}
