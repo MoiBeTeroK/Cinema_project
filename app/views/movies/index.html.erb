@@ -7,6 +7,7 @@
       <th>Продолжительность</th>
       <th>Возрастное ограничение</th>
       <th>Дата выхода</th>
+      <th>Действия</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,9 @@
         <td><%= movie.duration %> мин</td>
         <td><%= movie.age_rating %></td>
         <td><%= movie.release_date %></td>
+        <td>
+          <%= button_to 'Удалить', movie_path(movie), method: :delete, class: 'delete-button' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
