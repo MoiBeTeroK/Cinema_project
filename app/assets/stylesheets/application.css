@@ -7,7 +7,8 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-th {
+th, td {
+    text-align: center;
     padding: 10px 20px;
     border: 1px solid #000000; 
 }
@@ -28,7 +29,13 @@ th {
     border-radius: 10px;
     color: #000000;
     font-weight: bold;
+    border: none;
 }
 .tabs li a:hover, .add-movie:hover, .back-button:hover {
     background-color: #b4b4b4;
+}
+.text {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
 }
