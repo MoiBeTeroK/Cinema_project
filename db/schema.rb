@@ -10,25 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_15_125642) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_15_161501) do
   create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.integer "duration"
-    t.string "age_rating"
-    t.date "release_date"
+    t.string "title", null: false
+    t.integer "duration", null: false
+    t.string "age_rating", null: false
+    t.date "release_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.string "user_name", null: false
+    t.integer "rating", null: false
+    t.text "review_text", null: false
+    t.datetime "review_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "movie_id", null: false
-    t.integer "hall_number"
-    t.date "start_date"
-    t.time "start_time"
+    t.integer "hall_number", null: false
+    t.date "start_date", null: false
+    t.time "start_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_sessions_on_movie_id"
   end
 
+  add_foreign_key "reviews", "movies"
   add_foreign_key "sessions", "movies"
 end

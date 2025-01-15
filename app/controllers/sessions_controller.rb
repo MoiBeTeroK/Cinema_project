@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: %i[show edit update destroy]
+  before_action :set_session, only: [:show, :edit, :update, :destroy]
 
   def index
     @sessions = Session.all
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
 
   def destroy
     @session.destroy
-    redirect_to sessions_url
+    redirect_to sessions_path
   end
 
   private

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie: one
+  user_name: MyString
+  rating: 1
+  review_text: MyText
+  review_date: 2025-01-15 17:45:37
+
+two:
+  movie: two
+  user_name: MyString
+  rating: 1
+  review_text: MyText
+  review_date: 2025-01-15 17:45:37

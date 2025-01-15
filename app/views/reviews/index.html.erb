@@ -1,0 +1,18 @@
+<h1>Список отзывов</h1>
+
+<hr>
+<div class='main'>
+  <% @reviews.each do |review| %>
+    <div>
+      <%= link_to "#{review.user_name}", review_path(review), class: "movie-link" %>
+      <div>
+        <span>Фильм: <%= review.movie.title %> </span> |
+        <span>Оценка: <%= review.rating %> / 10 </span>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>
+
+<%= link_to "Назад", root_path, class: "button" %>
+<%= link_to "Добавить новый отзыв", new_review_path, class: "button" %>
