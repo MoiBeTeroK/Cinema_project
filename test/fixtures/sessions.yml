@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  movie: one
+  hall_number: 1
+  start_date: 2025-01-15
+  start_time: 2025-01-15 15:56:43
+
+two:
+  movie: two
+  hall_number: 1
+  start_date: 2025-01-15
+  start_time: 2025-01-15 15:56:43

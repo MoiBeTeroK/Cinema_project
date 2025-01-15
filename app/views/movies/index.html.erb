@@ -1,7 +1,7 @@
 <h1>Список фильмов</h1>
 
 <hr>
-<div class='movies'>
+<div class='main'>
   <% @movies.each do |movie| %>
     <div>
       <%= link_to "#{movie.title} (#{movie.release_date.strftime('%Y')})", movie_path(movie), class: "movie-link" %>

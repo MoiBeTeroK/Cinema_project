@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+  has_many :sessions, dependent: :destroy
+  
   validates :title, presence: true
   validates :duration, presence: true
   validates :age_rating, presence: true, format: { with: /\A\d{1,2}\+\z/}

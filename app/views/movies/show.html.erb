@@ -6,7 +6,7 @@
   <p><strong>Возрастное ограничение:</strong> <%= @movie.age_rating %></p>
 </div>
 
-<div class="movie-actions">
+<div class="actions">
   <%= link_to "Назад", movies_path, class: "button" %>
   <%= link_to "Изменить", edit_movie_path(@movie), class: "button" %>
   <%= form_with model: @movie, method: :delete do |form| %>

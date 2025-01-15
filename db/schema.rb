@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_14_155938) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_15_125642) do
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.integer "duration"
@@ -19,4 +19,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_14_155938) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "hall_number"
+    t.date "start_date"
+    t.time "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_sessions_on_movie_id"
+  end
+
+  add_foreign_key "sessions", "movies"
 end

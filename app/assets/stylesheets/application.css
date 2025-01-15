@@ -1,10 +1,10 @@
 h1 {
     text-align: center;
 }
-.movies {
+.main {
     position: relative;
 }
-.button {
+.tabs li a, .button {
     text-decoration: none;
     padding: 10px 15px;
     background-color: #e8e8e8;
@@ -24,7 +24,17 @@ h1 {
     gap: 20px;
     margin-bottom: 20px;
 }
-.movie-actions {
+.actions {
     display: flex;
     gap: 10px;
+}
+.tabs {
+    margin-top: 20px;
+}
+.tabs ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px
 }
