@@ -1,29 +1,17 @@
 <h1>Список фильмов</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Название</th>
-      <th>Продолжительность</th>
-      <th>Возрастное ограничение</th>
-      <th>Дата выхода</th>
-      <th>Действия</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.duration %> мин</td>
-        <td><%= movie.age_rating %></td>
-        <td><%= movie.release_date %></td>
-        <td>
-          <%= button_to 'Удалить', movie_path(movie), method: :delete, class: 'delete-button' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<hr>
+<div class='movies'>
+  <% @movies.each do |movie| %>
+    <div>
+      <%= link_to "#{movie.title} (#{movie.release_date.strftime('%Y')})", movie_path(movie), class: "movie-link" %>
+      <div>
+        <span>Продолжительность: <%= movie.duration %> мин</span>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+</div>
 
-<%= link_to 'Назад', root_path, class: 'back-button' %>
-<%= link_to 'Добавить новый фильм', new_movie_path, class: 'add-movie' %>
+<%= link_to "Назад", root_path, class: "button" %>
+<%= link_to "Добавить новый фильм", new_movie_path, class: "button" %>

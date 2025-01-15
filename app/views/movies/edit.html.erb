@@ -1,8 +1,7 @@
-<h1>Добавить новый фильм</h1>
+<h1>Изменить фильм</h1>
 
 <%= form_with(model: @movie, local: true) do |form| %>
-
- <% if @movie.errors.any? %>
+  <% if @movie.errors.any? %>
     <div>
       <h2>Ошибки:</h2>
       <ul>
@@ -14,28 +13,27 @@
   <% end %>
 
   <div class='text'>
-    <%= form.label :title, "Название:" %>
+    <%= form.label :title, "Название" %>
     <%= form.text_field :title %>
   </div>
 
   <div class='text'>
-    <%= form.label :duration, "Продолжительность (мин):" %>
+    <%= form.label :duration, "Продолжительность (мин)" %>
     <%= form.number_field :duration, min: 1 %>
   </div>
 
   <div class='text'>
-    <%= form.label :age_rating, "Возрастное ограничение:" %>
-    <%= form.text_field :age_rating, pattern: '\d{1,2}\+' %>
+    <%= form.label :age_rating, "Возрастное ограничение" %>
+    <%= form.text_field :age_rating %>
   </div>
 
   <div class='text'>
-    <%= form.label :release_date, "Дата выпуска:" %>
+    <%= form.label :release_date, "Дата выпуска" %>
     <%= form.date_select :release_date, start_year: 1900, end_year: Time.now.year %>
   </div>
 
   <div>
-    <%= link_to 'Назад', movies_path, class: 'button' %>
-    <%= form.submit 'Добавить фильм', class: 'button' %>
+    <%= link_to 'Назад', movie_path(@movie), class: 'button' %>
+    <%= form.submit 'Сохранить изменения', class: 'button' %>
   </div>
 <% end %>
-
