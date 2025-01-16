@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   has_many :sessions, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   
   validates :title, presence: true
   validates :duration, presence: true

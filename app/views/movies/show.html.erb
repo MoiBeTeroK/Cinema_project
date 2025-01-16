@@ -1,4 +1,4 @@
-<h1><%= @movie.title %></h1>
+<h1>Фильм: <%= @movie.title %></h1>
 
 <div>
   <p><strong>Дата выхода:</strong> <%= @movie.release_date.strftime('%d.%m.%Y') %></p>
@@ -13,5 +13,60 @@
     <button type="submit" onclick="return confirm('Удалить этот фильм?')" class="button">
       Удалить
     </button>
+  <% end %>
+</div>
+
+<div>
+  <h2>Сеансы</h2>
+  <% if @sessions.any? %>
+    <div>
+      <h3>Будущие сеансы:</h3>
+      <% future_sessions = @sessions.select { |session| session.start_date >= DateTime.now } %>
+      <% if future_sessions.any? %>
+        <% future_sessions.each do |session| %>
+          <strong>Зал:</strong> <%= session.hall_number %> |
+          <strong>Дата:</strong> <%= session.start_date.strftime('%d.%m.%Y') %> |
+          <strong>Время:</strong> <%= session.start_time.strftime('%H:%M') %>
+          <hr>
+        <% end %>
+      <% else %>
+        <p>Будущих сеансов для этого фильма пока нет.</p>
+      <% end %>
+    </div>
+
+    <div>
+      <h3>Завершённые сеансы:</h3>
+      <% past_sessions = @sessions.select { |session| session.start_date < DateTime.now } %>
+      <% if past_sessions.any? %>
+        <% past_sessions.each do |session| %>
+          <strong>Зал:</strong> <%= session.hall_number %> |
+          <strong>Дата:</strong> <%= session.start_date.strftime('%d.%m.%Y') %> |
+          <strong>Время:</strong> <%= session.start_time.strftime('%H:%M') %>
+          <hr>
+        <% end %>
+      <% else %>
+        <p>Завершённых сеансов для этого фильма пока нет.</p>
+      <% end %>
+    </div>
+
+  <% else %>
+    <p>Сеансов для этого фильма пока нет.</p>
+  <% end %>
+</div>
+
+<div>
+  <h2>Отзывы</h2>
+  <% if @movie.reviews.any? %>
+    <% @movie.reviews.each do |review| %>
+      <div class="review">
+        <p><strong>Автор:</strong> <%= review.user_name %></p>
+        <p><strong>Оценка:</strong> <%= review.rating %> / 10</p>
+        <p><strong>Отзыв:</strong> <%= review.review_text %></p>
+        <p><strong>Дата отзыва:</strong> <%= review.review_date.strftime('%d.%m.%Y') %></p>
+        <hr>
+      </div>
+    <% end %>
+  <% else %>
+    <p>Отзывов для этого фильма пока нет.</p>
   <% end %>
 </div>

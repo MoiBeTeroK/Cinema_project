@@ -1,5 +1,5 @@
-<h1>Отзыв на фильм <%= @review.movie.title %></h1>
-
+<h1>Отзыв на фильм "<%= @review.movie.title %>"</h1>
+<hr>
 <div>
   <p><strong>Пользователь:</strong> <%= @review.user_name %></p>
   <p><strong>Фильм:</strong> <%= @review.movie.title %></p>
@@ -16,4 +16,23 @@
       Удалить
     </button>
    <% end %>
+</div>
+
+<hr>
+
+<h2>Другие отзывы пользователя</h2>
+
+<div>
+  <% other_reviews = Review.where(user_name: @review.user_name).where.not(id: @review.id) %>
+  <% if other_reviews.any? %>
+    <% other_reviews.each do |other_review| %>
+      <div>
+        <p><strong><%= link_to 'Отзыв', review_path(other_review) %></strong> на фильм: <%= other_review.movie.title %></p>
+        <p><strong>Дата отзыва:</strong> <%= other_review.review_date.strftime('%d.%m.%Y') %> </p>
+        <hr>
+      </div>
+    <% end %>
+  <% else %>
+    <p>У этого пользователя нет других отзывов.</p>
+  <% end %>
 </div>

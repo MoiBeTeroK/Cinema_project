@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @sessions = @movie.sessions
   end
   
   def create

@@ -1,0 +1,37 @@
+<%= form_with(model: @movie, local: true) do |form| %>
+  <% if @movie.errors.any? %>
+    <div>
+      <h2>Ошибки:</h2>
+      <ul>
+        <% @movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='text'>
+    <%= form.label :title, "Название:" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class='text'>
+    <%= form.label :duration, "Продолжительность (мин):" %>
+    <%= form.number_field :duration, min: 1 %>
+  </div>
+
+  <div class='text'>
+    <%= form.label :age_rating, "Возрастное ограничение:" %>
+    <%= form.text_field :age_rating, pattern: '\\d{1,2}\\+' %>
+  </div>
+
+  <div class='text'>
+    <%= form.label :release_date, "Дата выпуска:" %>
+    <%= form.date_select :release_date, start_year: 1900, end_year: Time.now.year %>
+  </div>
+
+  <div>
+    <%= link_to 'Назад', @movie.new_record? ? movies_path : movie_path(@movie), class: 'button' %>
+    <%= form.submit @movie.new_record? ? 'Добавить фильм' : 'Сохранить изменения', class: 'button' %>
+  </div>
+<% end %>
