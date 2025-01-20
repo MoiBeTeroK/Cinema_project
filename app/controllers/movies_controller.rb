@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
 
   def show
     @sessions = @movie.sessions
+    @reviews = @movie.reviews
   end
   
   def create

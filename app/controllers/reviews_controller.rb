@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @other_reviews = Review.where(user_name: @review.user_name).where.not(id: @review.id)
   end
 
   def new
